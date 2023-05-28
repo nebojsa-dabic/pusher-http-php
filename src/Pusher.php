@@ -724,7 +724,8 @@ class Pusher implements LoggerAwareInterface, PusherInterface
             'query' => $signature,
             'http_errors' => false,
             'headers' => $headers,
-            'base_uri' => $this->channels_url_prefix()
+            'base_uri' => $this->channels_url_prefix(),
+            'verify' => false
         ]);
 
         $status = $response->getStatusCode();
@@ -776,7 +777,8 @@ class Pusher implements LoggerAwareInterface, PusherInterface
                 'body' => $body,
                 'http_errors' => false,
                 'headers' => $headers,
-                'base_uri' => $this->channels_url_prefix()
+                'base_uri' => $this->channels_url_prefix(),
+                'verify' => false
             ]);
         } catch (ConnectException $e) {
             throw new ApiErrorException($e->getMessage());
@@ -826,7 +828,8 @@ class Pusher implements LoggerAwareInterface, PusherInterface
             'body' => $body,
             'http_errors' => false,
             'headers' => $headers,
-            'base_uri' => $this->channels_url_prefix()
+            'base_uri' => $this->channels_url_prefix(),
+            'verify' => false
         ])->then(function ($response) {
             $status = $response->getStatusCode();
 
